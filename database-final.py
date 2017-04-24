@@ -7,8 +7,8 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def home():
+    return render_template ('layout.html')
 
 
 # Load default config and override config from an environment variable
