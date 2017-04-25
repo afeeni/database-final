@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Welcome to {% endblock %}
+{% block content %}
+<br /> <br/>
+<div class="jumbotron">
+    <h1> Welcome</h1>
+    <p>View Your Student Accounts Information Here</p>
+<!-- p><a class="btn btn-primary btn-lg" href="#" role="button">Login</a></p> -->
+</div>
+<br >
+
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Bill Overview</h3>
+  </div>
+  <div class="panel-body">
+      <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Balance</th> <!--- BALANCE = CHARGES - AID  ---->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Amount</td>
+        <td>Date</td>
+      </tr>
+    </tbody>
+          <div>
+          <thead>
+      <tr>
+        <th>     <br /> <br /> Last Payment</th>
+      </tr>
+    </thead>
+                  <tbody>
+      <tr>
+        <td>Amount</td>
+        <td>Date</td>
+        <td>By</td>
+      </tr>
+    </tbody>
+          </div>
+  </table>
+  </div>
+</div>
+
+
+ <!--   <div class="center">
+        <div class="row">
+    {% for x in listings %}
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h3><a href="{{url_for('listing_show', listing_id=x.id)}}">{{ x.name }}</a></h3>
+                    <p> {{ x.description[:25] }} </p>
+                    <p> {{ x.price }} </p>
+                </div>
+            </div>
+        </div> -->
+    {% endfor %}
+        </div>
+    </div>
+    <br /> <br/>
+    <br /> <br/>
+    <br /> <br/>
+{% endblock %}
