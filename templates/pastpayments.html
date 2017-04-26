@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{% block title %}Welcome to {% endblock %}
+{% block content %}
+    <br />  <br />
+     <br />  <br />
+
+      <tbody>
+      {% for payment in payments %}
+        <tr>
+          <td>{{ payment.PMT_ID }}</td>
+          <td>{{ payment.PMT_AMT }}</td>
+          <td>{{ payment.PMT_STATUS}}</td>
+          <td>{{ spayment.PMT_METHOD }}</td>
+          <td>{{ payment.STU_ID }}</td>
+        </tr>
+
+      {% else %}
+        <tr>
+          <td>No Products</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+

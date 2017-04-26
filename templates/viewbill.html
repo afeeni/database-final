@@ -1,3 +1,6 @@
+
+
+
 {% extends "base.html" %}
 {% block title %}Welcome to {% endblock %}
 {% block content %}
@@ -12,30 +15,31 @@
     <h3 class="panel-title">Charges Activity</h3>
   </div>
   <div class="panel-body">
-    *IMPORT CHARGES HERE*
-  </div>
-</div>
+             <div id="ShowProfile">
 
-    <div class="panel panel-success">
-  <div class="panel-heading">
-    <h3 class="panel-title">Aid Activity</h3>
-  </div>
-  <div class="panel-body">
-    *IMPORT AID AMOUNTS HERE*
-  </div>
-</div>
+              <div class="list-group">
 
-    <div class="panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title">Total Amount Due</h3>
-  </div>
-  <div class="panel-body">
-    *IMPORT CHARGES - AID SQL STATEMENT FOR AMOUNT DUE?*
-  </div>
-</div>
+              <ul class="list-group">
+      {% for charge in charges %}
 
-        </div>
-    </div>
+            <li class="list-group-item"><b>Charge ID:</b> {{ charge.CHRG_ID }} </li>
+           <li class="list-group-item"><b>Charge Amount:</b>{{ charge.CHRG_AMNT }} </li>
+           <li class="list-group-item"><b>Charge Name:</b>{{ charge.CHRG_NAME}} </li>
+           <li class="list-group-item"><b>Student ID:</b>{{ charge.STU_ID }} </li>
+          </ul>
+
+      {% else %}
+        <tr>
+          <td>No Information Available</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+{% endfor %}
+
     <br /> <br/>
     <br /> <br/>
     <br /> <br/>

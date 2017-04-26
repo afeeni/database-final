@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Welcome to {% endblock %}
+{% block content %}
+    <br />  <br />
+     <br />  <br />
+
+
+    <h1> Student Information </span></h1>
+    <button type="button" class="btn btn-info"> <a href="/register"</a> Create New User</button>
+        <br />  <br />
+
+          {% for student in students %}
+           <div id="ShowProfile">
+
+              <div class="list-group">
+
+              <ul class="list-group">
+                  <li class="list-group-item"><b>Student Name:</b> {{ student.STU_FNAME }} {{ student.STU_LNAME }}</li>
+  <li class="list-group-item"><b>Student ID:</b> {{ student.STU_ID }}</li>
+  <li class="list-group-item"><b>Student Address:</b> {{ student.STU_ADDRESS }}</li>
+  <li class="list-group-item"><b>Student Phone:</b> {{ student.STU_PHONE }}</li>
+  <li class="list-group-item"><b>Student Email:</b> {{ student.STU_EMAIL }}</li>
+</ul>
+
+            </tr>
+              {% else %}
+                <tr>
+                  <td>No Information Available</td>
+                </tr>
+              {% endfor %}
+
+
+    <br /> <br/>
+    <br /> <br/>
+    <br /> <br/>
+
+
+{% endblock %}
+
+
+<!--- Admin can add a new studnet --->

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Welcome to {% endblock %}
+{% block content %}
+<br /> <br/>
+
+<h2> Register Student</h2>
+
+    <h2> Currently Registered Students</h2>
+    <table>
+    {% for student in students %}
+    <tr><td>{{ student.STU_FNAME }} {{ student.STU_LNAME }}</td></tr>
+  {% endfor %}
+
+    </table>
+
+    <br />
+
+    <form method="POST" action ="/add">
+<table>
+        <tr><td>Student ID</td><td><input type="text" name="id" /> </td></tr>
+        <tr><td>Student First Name</td><td><input type="text" name="fname" /> </td></tr>
+        <tr><td>Student Last Name</td><td><input type="text" name="lname" /> </td></tr>
+        <tr><td>Student Address</td><td><input type="text" name="address" /> </td></tr>
+        <tr><td>Student Phone</td><td><input type="text" name="phone" /> </td></tr>
+        <tr><td>Student Email</td><td><input type="text" name="email" /> </td></tr>
+</table>
+
+
+        <input type ="submit" value="Add Student" />
+
+
+    </form>
+
+
+{% endblock %}

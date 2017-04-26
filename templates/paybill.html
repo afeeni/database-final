@@ -2,28 +2,35 @@
 
 {% block title %}Bill Pay{% endblock %}
 {% block content %}
+
+       <br /> <br />
+        <h1 style="text-align:center;">Add Student Aid Here</h1>
+
      <br /> <br />
-     <br /> <br />
-    <h1 style="text-align:center;">Pay Your Bill Here</h1>
-<br /> <br />
-    <br /> <br />
+
 
 <form action="#" method="get">
 
+  {% for student in students %}
+  <input type="checkbox" value="Bike"> Full Balance<br>
 
-  <input type="checkbox" value="Bike"> Current Balance:<br>
+
 
   <div class="form-group">
     <div class="col-sm-10">
-      <h5 class="form-control-static">*LINK THE ACTUAL CURRENT BALANCE FROM DATABASE HERE*</h5>
+        <h5> {{ student.STU_FNAME }} {{ student.STU_LNAME }}</h5>
+
     </div>
   </div>
 </form>
 
+{%  endfor %}
+
+
 <!--- Put a box around the current balance amount shorten the box for the other amount field. remove
   "car" and "bike" --->
 
-    <br /> <br />
+
   <input type="checkbox" value="Car" checked> Other Amount:<br>
 
     <div class="input-group">
@@ -31,13 +38,15 @@
   <input type="text" class="form-control"</span>
 </div>
 
-    <br /> <br />
-  <input type="submit" value="Submit">
+        <br /> <br />
+
+  <input type="submit" value="Submit"><a href="/templates/payment.html"></a>
 </form>
 
-    <br /> <br />
 
-    <!-- date, note, amount --->
+    <!-- date, note, amount
+    add up all charge amounts to equal 'current balance'
+    --->
 
 
 

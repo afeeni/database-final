@@ -169,7 +169,8 @@ h1 {
 <br /> <br />
 <br /> <br />
 
-<button onclick="document.getElementById('id01').style.display='block'" style="text-align:center;">Login</button>
+<!--- Modal start -->
+<button onclick="document.getElementById('id01').style.display='block'" style="text-align:center;"> Login</button>
 
 <div id="id01" class="modal">
 
@@ -179,6 +180,12 @@ h1 {
       <img src="https://studentaffairs.howard.edu/sites/studentaffairs.howard.edu/files/HU_StudentLife.jpg" alt="Avatar" class="avatar">
     </div>
 
+  <!--- modal with photo end -->
+
+
+  {## % if error %#<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <form action="{{ url_for('index') }}" method=post>##}
+
     <div class="container">
       <label><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
@@ -187,13 +194,18 @@ h1 {
       <input type="password" placeholder="Enter Password" name="psw" required>
 
       <!--button type="submit"> Login</button-->
-         <a href="/home"> Login </a>
-      <input type="checkbox" checked="checked"> Remember me
-    </div>
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><span> <a href="/home"> Login </a></span> </button>
 
-    <div class="container" style="background-color:#f1f1f1">
+
+
+  <form class="modal-content animate" action="#">
+    <div class="imgcontainer">
+      <input type="checkbox" checked="checked"> Remember me
+
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw"> <a href="#"> Forgot password?</a></span>
+      <span class="psw"> <a href="/forgot"> Forgot password?</a></span>
+<id="id01" class="modal">
+
     </div>
   </form>
 </div>
