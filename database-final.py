@@ -19,15 +19,15 @@ def login():
         else:
             session['logged_in'] = True
             flash('You are logged in')
-            return redirect(url_for('/'))
-    return render_template('login.html', error=error)
+            return redirect(url_for('/home'))
+    return render_template('/login.html', error=error)
 
 
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
     flash('You are logged out')
-    return redirect(url_for('/home'))
+    return redirect(url_for('/'))
 
 
 @app.route('/viewbill')
@@ -41,7 +41,7 @@ def viewbill():
 @app.route('/pastpayments')
 def pastpayments():
     db = get_db()
-    cur = db.execute('SELECT * FROM PAYMENT')
+    cur = db.execute('SELECT * FROM PAYMENT GROUP BY PAYMENT.STU_ID')
     payments = cur.fetchall()
     return render_template('pastpayments.html', payments=payments)
 
@@ -49,12 +49,6 @@ def pastpayments():
 @app.route('/payment')
 def payment():
     return render_template('payment.html')
-
-@app.route('/registration2', methods=['POST'])
-def reply():
-    students=request.form['student']
-    return render_template('registration2.html', student=students)
-
 
 
 @app.route('/register')
@@ -74,16 +68,23 @@ def add():
     phone = request.form['phone']
     email = request.form['email']
 
-    db = get_db();
-    db.execute('INSERT INTO STUDENT VALUES (?, ?, ?, ? ,?, ?)', [id, fname, lname, address, phone,email])
+    db = get_db()
+    db.execute('INSERT INTO STUDENT VALUES (?, ?, ?, ? ,?, ?)', [id, fname, lname, address, phone, email])
     db.commit()
     return redirect(url_for('register'))
 
+@app.route('/delete', methods=['GET', 'POST'])
+def delete():
+    id = request.form['id']
+    db = get_db()
+    db.execute('DELETE FROM STUDENT WHERE STUDENT.STU_ID = (?)', [id])
+    db.commit()
+    return redirect(url_for('register'))
 
 @app.route('/home')
 def index():
     db = get_db()
-    cur = db.execute('SELECT * FROM STUDENT')
+    cur = db.execute('SELECT * FROM STUDENT GROUP BY STUDENT.STU_LNAME')
     students = cur.fetchall()
     cur = db.execute('SELECT * FROM CHARGE')
     charges = cur.fetchall()
@@ -92,6 +93,13 @@ def index():
     cur = db.execute('SELECT * FROM PAYMENT')
     payments = cur.fetchall()
     return render_template('index.html', students=students, charges=charges, aids=aids, payments=payments)
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    fname = request.form['fname']
+    db = get_db()
+    db.execute('SELECT * FROM STUDENTS WHERE STU_FNAME = %s', request.form['search'], [fname])
+    return render(url_for("search.html", records=c.fetchall()))
 
 
 @app.route('/userprofile')
@@ -102,9 +110,6 @@ def users():
     return render_template('userprofile.html', students=students)
 
 
-# @app.route('/viewbill')
-# def vbill():
-#   return render_template('viewbill.html')
 
 @app.route('/paybill')
 def paybill():

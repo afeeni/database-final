@@ -6,7 +6,17 @@
 
 
     <h1> Student Information </span></h1>
-    <button type="button" class="btn btn-info"> <a href="/register"</a> Create New User</button>
+    <br />
+
+    <div class="search">
+<form action="/search" method=post>
+    <input type=text name=search value="{{ request.form.search}}"></br>
+    <div class="actions"><input type=submit value="Search Student Records"></div>
+</form>
+</div>
+
+
+    <button type="button" class="btn btn-info"> <a href="/register"> Edit User Information</a></button>
         <br />  <br />
 
           {% for student in students %}
@@ -38,4 +48,4 @@
 {% endblock %}
 
 
-<!--- Admin can add a new studnet --->
+<!--- Admin can add a new student --->

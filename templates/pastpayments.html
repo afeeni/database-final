@@ -7,14 +7,35 @@
 
       <tbody>
       {% for payment in payments %}
+
+          <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{ payment.STU_ID }}</h3>
+  </div>
+  <div class="panel-body">
         <tr>
           <td>{{ payment.PMT_ID }}</td>
           <td>{{ payment.PMT_AMT }}</td>
           <td>{{ payment.PMT_STATUS}}</td>
-          <td>{{ spayment.PMT_METHOD }}</td>
-          <td>{{ payment.STU_ID }}</td>
+          <td>{{ payment.PMT_METHOD }}</td>
         </tr>
+  </div>
 
+                 <div class="list-group">
+
+              <ul class="list-group">
+                  <li class="list-group-item"><b>Student ID:</b> {{ payment.STU_ID }}</li>
+  <li class="list-group-item"><b>Student ID:</b> {{ payment.PMT_ID }}</li>
+  <li class="list-group-item"><b>Student Address:</b> {{ payment.PMT_STATUS}}</li>
+  <li class="list-group-item"><b>Student Phone:</b>{{ payment.PMT_METHOD }}</li>
+</ul>
+
+                 </div>
+
+
+
+
+          </div>
       {% else %}
         <tr>
           <td>No Products</td>
@@ -22,4 +43,7 @@
       {% endfor %}
       </tbody>
     </table>
+
+
+{% endblock %}
 

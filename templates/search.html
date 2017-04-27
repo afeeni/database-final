@@ -1,18 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Welcome to {% endblock %}
 {% block content %}
-<br /> <br/>
+    <br />  <br />
+     <br />  <br />
 
-<div class="jumbotron">
-    <h1> Welcome</h1>
-    <p View Your Student Accounts Information Here</p>
-<!-- p><a class="btn btn-primary btn-lg" href="#" role="button">Login</a></p> -->
-</div>
-<br >
-  {# # #% if session.logged_in  <form action="{{ url_for('index') }}" method=post class="form-horizontal">
-    <fieldset> ###}
 
-    <h1>Student Information </span></h1>
           {% for student in students %}
            <div id="ShowProfile">
 
@@ -26,6 +18,11 @@
   <li class="list-group-item"><b>Student Email:</b> {{ student.STU_EMAIL }}</li>
 </ul>
 
+
+
+
+
+
             </tr>
               {% else %}
                 <tr>
@@ -34,26 +31,9 @@
               {% endfor %}
 
 
-
-
     <br /> <br/>
     <br /> <br/>
     <br /> <br/>
 
 
 {% endblock %}
-
-
-    {#% endfor %#}
-
-
-
-    <br /> <br/>
-    <br /> <br/>
-    <br /> <br/>
-
-
-{#% endblock %#}
-
-
-<!--- Admin can add a new studnet --->
